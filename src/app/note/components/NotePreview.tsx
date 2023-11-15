@@ -40,14 +40,16 @@ export const NotePreview = ({ note }: Props) => {
           <Button>Details</Button>
         </Link>
         <ButtonGroup>
-          <Link href={`/note/${id}?edit=true`}>
+          <Link href={`/note/${id}?action=edit`}>
             <IconButton aria-label="edit">
               <EditIcon />
             </IconButton>
           </Link>
-          <IconButton aria-label="delete" color="error">
-            <DeleteIcon />
-          </IconButton>
+          <Link href={`/note/${id}?action=delete`}>
+            <IconButton aria-label="delete" color="error">
+              <DeleteIcon />
+            </IconButton>
+          </Link>
         </ButtonGroup>
       </CardActions>
     </Card>

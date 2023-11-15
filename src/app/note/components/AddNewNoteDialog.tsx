@@ -24,7 +24,6 @@ export const AddNewNoteDialog = ({ dialogOpen, handleDialogClose }: Props) => {
   const handleAddNote = () => {
     addNote(title, description);
     handleDialogClose();
-    getNotes();
   };
 
   return (

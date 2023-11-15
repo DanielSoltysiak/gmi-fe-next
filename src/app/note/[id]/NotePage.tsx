@@ -7,6 +7,7 @@ import { useState } from "react";
 import { EditNoteDialog } from "../components/EditNoteDialog";
 import { Note } from "../type";
 import { useSearchParams } from "next/navigation";
+import { DeleteNoteDialog } from "../components/DeleteNoteDialog";
 
 interface Props {
   note: Note;
@@ -14,11 +15,13 @@ interface Props {
 
 export const NotePage = ({ note }: Props) => {
   const params = useSearchParams();
-  const editionMode = params.get("edit") ? true : false;
-  
-  const { title, description } = note;
+  const editMode = params.get("action") === "edit";
+  const deleteMode = params.get("action") === "delete";
 
-  const [editDialogOpen, setEditDialogOpen] = useState<boolean>(editionMode);
+  const [editDialogOpen, setEditDialogOpen] = useState(editMode);
+  const [deletDialogOpen, setDeleteDialogOpen] = useState(deleteMode);
+
+  const { id, title, description } = note;
 
   return (
     <>
@@ -41,7 +44,12 @@ export const NotePage = ({ note }: Props) => {
             >
               Edit post
             </Button>
-            <Button aria-label="delete" color="error" endIcon={<DeleteIcon />}>
+            <Button
+              aria-label="delete"
+              color="error"
+              endIcon={<DeleteIcon />}
+              onClick={() => setDeleteDialogOpen(true)}
+            >
               Delete post
             </Button>
           </Box>
@@ -52,6 +60,11 @@ export const NotePage = ({ note }: Props) => {
         dialogOpen={editDialogOpen}
         handleDialogClose={() => setEditDialogOpen(false)}
         note={note}
+      />
+      <DeleteNoteDialog
+        dialogOpen={deletDialogOpen}
+        handleDialogClose={() => setDeleteDialogOpen(false)}
+        noteId={id}
       />
     </>
   );
