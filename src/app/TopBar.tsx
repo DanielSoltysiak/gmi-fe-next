@@ -8,9 +8,6 @@ import { AddNewNoteDialog } from "./note/components/AddNewNoteDialog";
 export const TopBar = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const handleDialogOpen = () => setDialogOpen(true);
-  const handleDialogClose = () => setDialogOpen(false);
-
   return (
     <>
       <AppBar position="fixed">
@@ -21,7 +18,7 @@ export const TopBar = () => {
           <Button
             color="inherit"
             endIcon={<AddIcon />}
-            onClick={handleDialogOpen}
+            onClick={() => setDialogOpen(true)}
           >
             Add new note
           </Button>
@@ -29,7 +26,7 @@ export const TopBar = () => {
       </AppBar>
       <AddNewNoteDialog
         dialogOpen={dialogOpen}
-        handleDialogClose={handleDialogClose}
+        handleDialogClose={() => setDialogOpen(false)}
       />
     </>
   );
