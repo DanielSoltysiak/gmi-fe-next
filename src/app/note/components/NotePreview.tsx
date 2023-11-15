@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import { Note } from "./type";
+import { Note } from "../type";
 import Link from "next/link";
 
 interface Props {

@@ -3,7 +3,7 @@
 import { AppBar, Button, Dialog, Toolbar, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { useState } from "react";
-import { AddNewNoteDialog } from "./AddNewNoteDialog";
+import { AddNewNoteDialog } from "./note/components/AddNewNoteDialog";
 
 export const TopBar = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
