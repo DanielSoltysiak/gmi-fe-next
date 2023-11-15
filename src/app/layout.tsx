@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { TopBar } from "./TopBar";
+import { Box } from "@mui/material";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,17 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <TopBar />
-        {children}
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            height: "100vh",
+            overflow: "auto",
+            pt: 15,
+          }}
+        >
+          {children}
+        </Box>
       </body>
     </html>
   );

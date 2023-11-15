@@ -10,13 +10,14 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { Note } from "./type";
+import Link from "next/link";
 
 interface Props {
   note: Note;
 }
 
 export const NotePreview = ({ note }: Props) => {
-  const { title, description } = note;
+  const { id, title, description } = note;
 
   return (
     <Card sx={{ mx: 10, my: 5 }}>
@@ -35,7 +36,9 @@ export const NotePreview = ({ note }: Props) => {
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: "space-between" }}>
-        <Button>Details</Button>
+        <Link href={`/note/${id}`}>
+          <Button>Details</Button>
+        </Link>
         <ButtonGroup>
           <IconButton aria-label="edit">
             <EditIcon />
