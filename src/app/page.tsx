@@ -1,26 +1,23 @@
-import { useState } from "react";
+import { getNotes } from "@/utils/getNotes";
 import { NotePreview } from "./note/NotePreview";
-import { Note } from "./note/type";
-import styles from "./page.module.css";
-
-async function getNotes() {
-  const res = await fetch("http://localhost:7000/notes");
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch notes");
-  }
-
-  return res.json();
-}
+import { Box } from "@mui/material";
 
 export default async function Home() {
-  const notes: Note[] = await getNotes();
+  const notes = await getNotes();
 
   return (
-    <main className={styles.main}>
+    <Box
+      component="main"
+      sx={{
+        flexGrow: 1,
+        height: "100vh",
+        overflow: "auto",
+        pt: 15
+      }}
+    >
       {notes.map((note) => (
         <NotePreview note={note} key={note.id} />
       ))}
-    </main>
+    </Box>
   );
 }
