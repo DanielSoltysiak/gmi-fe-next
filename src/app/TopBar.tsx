@@ -4,6 +4,7 @@ import { AppBar, Button, Dialog, Toolbar, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { useState } from "react";
 import { AddNewNoteDialog } from "./note/components/AddNewNoteDialog";
+import Link from "next/link";
 
 export const TopBar = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -13,7 +14,7 @@ export const TopBar = () => {
       <AppBar position="fixed">
         <Toolbar>
           <Typography variant="h3" component="h1" sx={{ flexGrow: 1 }}>
-            Notes
+            <Link href="/">Notes</Link>
           </Typography>
           <Button
             color="inherit"
