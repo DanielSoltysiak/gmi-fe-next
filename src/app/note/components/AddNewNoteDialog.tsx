@@ -20,10 +20,19 @@ interface Props {
 export const AddNewNoteDialog = ({ dialogOpen, handleDialogClose }: Props) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [titleError, setTitleError] = useState(false);
+  const [descriptionError, setDescriptionError] = useState(false);
 
   const handleAddNote = () => {
-    addNote(title, description);
-    handleDialogClose();
+    if (title.length > 1 && description.length > 1) {
+      addNote(title, description);
+      handleDialogClose();
+    } else {
+      title.length < 1 ? setTitleError(true) : setTitleError(false);
+      description.length < 1
+        ? setDescriptionError(true)
+        : setDescriptionError(false);
+    }
   };
 
   return (
@@ -39,6 +48,9 @@ export const AddNewNoteDialog = ({ dialogOpen, handleDialogClose }: Props) => {
           To add new note, please enter title and description
         </DialogContentText>
         <TextField
+          required
+          error={titleError}
+          helperText={titleError && "Title can not be empty"}
           autoFocus
           margin="dense"
           id="title"
@@ -48,6 +60,9 @@ export const AddNewNoteDialog = ({ dialogOpen, handleDialogClose }: Props) => {
           onChange={(e) => setTitle(e.target.value)}
         />
         <TextField
+          required
+          error={descriptionError}
+          helperText={descriptionError && "Description can not be empty"}
           multiline
           rows={5}
           margin="dense"

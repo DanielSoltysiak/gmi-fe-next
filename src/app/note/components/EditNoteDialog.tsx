@@ -26,11 +26,19 @@ export const EditNoteDialog = ({
 
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
+  const [titleError, setTitleError] = useState(false);
+  const [descriptionError, setDescriptionError] = useState(false);
 
   const handleSave = () => {
-    editNote(id, newTitle, newDescription);
-    handleDialogClose();
-    getNote(id);
+    if (newTitle.length > 1 && newDescription.length > 1) {
+      editNote(id, newTitle, newDescription);
+      handleDialogClose();
+    } else {
+      newTitle.length < 1 ? setTitleError(true) : setTitleError(false);
+      newDescription.length < 1
+        ? setDescriptionError(true)
+        : setDescriptionError(false);
+    }
   };
 
   return (
@@ -43,6 +51,9 @@ export const EditNoteDialog = ({
       <DialogTitle>Edit note</DialogTitle>
       <DialogContent>
         <TextField
+          required
+          error={titleError}
+          helperText={titleError && "Title can not be empty"}
           defaultValue={title}
           autoFocus
           margin="dense"
@@ -53,6 +64,9 @@ export const EditNoteDialog = ({
           onChange={(e) => setNewTitle(e.target.value)}
         />
         <TextField
+          required
+          error={descriptionError}
+          helperText={descriptionError && "Description can not be empty"}
           defaultValue={description}
           multiline
           rows={5}
