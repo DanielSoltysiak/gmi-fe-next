@@ -2,7 +2,6 @@ import { Note } from "@/app/note/type";
 
 export async function getNote(id: string) {
   const res = await fetch(`http://localhost:7000/notes/${id}`, {
-    cache: "no-cache",
     next: { tags: [`note-${id}`] },
   });
 
