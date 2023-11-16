@@ -27,7 +27,12 @@ export const AddNewNoteDialog = ({ dialogOpen, handleDialogClose }: Props) => {
   };
 
   return (
-    <Dialog open={dialogOpen} onClose={handleDialogClose}>
+    <Dialog
+      open={dialogOpen}
+      onClose={handleDialogClose}
+      fullWidth
+      maxWidth="lg"
+    >
       <DialogTitle>Add new note</DialogTitle>
       <DialogContent>
         <DialogContentText>
@@ -44,7 +49,7 @@ export const AddNewNoteDialog = ({ dialogOpen, handleDialogClose }: Props) => {
         />
         <TextField
           multiline
-          rows={4}
+          rows={5}
           margin="dense"
           id="description"
           label="Note description"

@@ -26,7 +26,7 @@ export default function RootLayout({
             flexGrow: 1,
             height: "100vh",
             overflow: "auto",
-            pt: 15,
+            pt: { xs: 10, sm: 15 },
           }}
         >
           {children}

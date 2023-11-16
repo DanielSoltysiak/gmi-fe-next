@@ -34,7 +34,12 @@ export const EditNoteDialog = ({
   };
 
   return (
-    <Dialog open={dialogOpen} onClose={handleDialogClose}>
+    <Dialog
+      open={dialogOpen}
+      onClose={handleDialogClose}
+      fullWidth
+      maxWidth="lg"
+    >
       <DialogTitle>Edit note</DialogTitle>
       <DialogContent>
         <TextField
@@ -50,7 +55,7 @@ export const EditNoteDialog = ({
         <TextField
           defaultValue={description}
           multiline
-          rows={4}
+          rows={5}
           margin="dense"
           id="description"
           label="Note description"

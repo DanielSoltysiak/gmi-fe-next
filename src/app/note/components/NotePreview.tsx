@@ -20,9 +20,9 @@ export const NotePreview = ({ note }: Props) => {
   const { id, title, description } = note;
 
   return (
-    <Card sx={{ mx: 10, my: 5 }}>
+    <Card sx={{ mx: { xs: 2, sm: 10 }, my: { xs: 2, sm: 5 } }}>
       <CardContent>
-        <Typography variant="h5">{title}</Typography>
+        <Typography variant={"h5"}>{title}</Typography>
         <Typography
           sx={{
             display: "-webkit-box",

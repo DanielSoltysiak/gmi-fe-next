@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, Paper, Typography } from "@mui/material";
+import { Box, Button, Container, Paper, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useState } from "react";
@@ -25,13 +25,19 @@ export const NotePage = ({ note }: Props) => {
 
   return (
     <>
-      <Paper sx={{ mx: 10, p: 5 }}>
+      <Paper
+        sx={{
+          mx: { xs: 2, sm: 10 },
+          my: { xs: 2, sm: 5 },
+          p: { xs: 2, sm: 5 },
+        }}
+      >
         <Box
-          flexDirection="row"
+          flexDirection={{ xs: "column-reverse", sm: "row" }}
           display="flex"
           justifyContent="space-between"
           alignItems="center"
-          mb={5}
+          mb={{ xs: 2, sm: 5 }}
         >
           <Typography variant="h3" component="h2" display="inline">
             {title}

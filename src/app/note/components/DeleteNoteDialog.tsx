@@ -29,7 +29,7 @@ export const DeleteNoteDialog = ({
   };
 
   return (
-    <Dialog open={dialogOpen} onClose={handleDialogClose}>
+    <Dialog open={dialogOpen} onClose={handleDialogClose} fullWidth>
       <DialogTitle>Are you sure?</DialogTitle>
       <DialogContent>
         <DialogContentText>Deleted note can not be restored</DialogContentText>
